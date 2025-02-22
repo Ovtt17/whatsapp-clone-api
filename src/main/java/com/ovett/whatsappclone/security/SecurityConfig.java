@@ -1,5 +1,6 @@
 package com.ovett.whatsappclone.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -22,6 +23,9 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Value("${application.frontendUrl}")
+    private String frontendUrl;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -30,6 +34,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(req ->
                         req
                                 .requestMatchers("/auth/**",
+                                        "/v2/api-docs",
                                         "/v3/api-docs",
                                         "/v3/api-docs/**",
                                         "/swagger-resources",
@@ -50,7 +55,6 @@ public class SecurityConfig {
                                 )
                 )
         ;
-
         return http.build();
     }
 
@@ -59,7 +63,7 @@ public class SecurityConfig {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(Collections.singletonList("http://localhost:5173"));
+        config.setAllowedOrigins(Collections.singletonList(frontendUrl));
         config.setAllowedHeaders(Arrays.asList(
                 ORIGIN,
                 AUTHORIZATION,
