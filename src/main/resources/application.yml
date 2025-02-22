@@ -11,17 +11,20 @@ spring:
             hibernate:
                 format_sql: true
         database: postgresql
-        database-platform: ${JPA_HIBERNATE_FORMAT_SQL}
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
     flyway:
         enabled: false
     security:
         oauth2:
-            resource-server:
+            resourceserver:
                 jwt:
                     issuer-uri: ${OAUTH2_JWT_ISSUER_URI}
     servlet:
         multipart:
             max-file-size: ${SERVLET_MULTIPART_MAX_FILE_SIZE}
+
+springdoc:
+    default-produces-media-type: application/json
 
 application:
     file:
