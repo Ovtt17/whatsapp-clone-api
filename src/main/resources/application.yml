@@ -1,8 +1,8 @@
 spring:
     datasource:
-        url: jdbc:postgresql://localhost:5432/whatsapp_clone
-        username: username
-        password: password
+        url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+        username: ${DB_USERNAME}
+        password: ${DB_PASSWORD}
     jpa:
         hibernate:
             ddl-auto: update
@@ -16,14 +16,18 @@ spring:
         enabled: false
     security:
         oauth2:
-            resource-server:
+            resourceserver:
                 jwt:
-                    issuer-uri: http://localhost:9090/realms/whatsapp-clone
+                    issuer-uri: ${OAUTH2_JWT_ISSUER_URI}
     servlet:
         multipart:
-            max-file-size: 50MB
+            max-file-size: ${SERVLET_MULTIPART_MAX_FILE_SIZE}
+
+springdoc:
+    default-produces-media-type: application/json
 
 application:
     file:
         uploads:
             media-output-path: ./uploads
+    frontendUrl: ${FRONTEND_URL}
