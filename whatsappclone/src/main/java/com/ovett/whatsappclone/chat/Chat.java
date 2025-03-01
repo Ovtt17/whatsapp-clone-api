@@ -29,7 +29,8 @@ import static jakarta.persistence.GenerationType.UUID;
                 "FROM Chat c " +
                 "WHERE " +
                 "(c.sender.id = :senderId AND c.recipient.id = :recipientId) " +
-                "OR (c.sender.id = :recipientId AND c.recipient.id = :senderId)")
+                "OR (c.sender.id = :recipientId AND c.recipient.id = :senderId) " +
+                "ORDER BY createdDate DESC")
 public class Chat extends BaseAuditingEntity {
     @Id
     @GeneratedValue(strategy = UUID)
