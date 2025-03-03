@@ -36,7 +36,7 @@ public class Message extends BaseAuditingEntity {
     @GeneratedValue(strategy = SEQUENCE, generator = "msg_seq")
     private Long id;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     @Enumerated(EnumType.STRING)
