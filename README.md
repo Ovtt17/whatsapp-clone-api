@@ -58,8 +58,8 @@ This will spin up:
 - The Spring Boot backend
 
 ### 4️⃣ Access the Application
-- **Spring Boot API**: http://localhost:8081
-- **Keycloak Admin Console**: http://localhost:8080/auth (default admin: `admin/admin`)
+- **Spring Boot API**: http://localhost:8080
+- **Keycloak Admin Console**: http://localhost:9090/auth (default admin: `admin/admin`)
 - **Database**: Exposed on port `5432`
 
 ### 5️⃣ Stop Services
@@ -91,7 +91,7 @@ This application uses **Spring Security** with **OAuth2** and **JWT** tokens. Ke
 This application uses **Swagger** for API documentation. 
 Once the application is running, you can access the Swagger UI at:
 ```
-http://localhost:8081/swagger-ui/index.html
+http://localhost:8080/swagger-ui/index.html
 ```
 
 **Swagger** provides a user-friendly interface to explore and test the API endpoints.
