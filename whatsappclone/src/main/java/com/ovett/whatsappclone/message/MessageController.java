@@ -29,7 +29,7 @@ public class MessageController {
     public void uploadMediaMessage(
             @RequestParam("chat-id") String chatId,
             @Parameter()
-            @RequestParam("file") MultipartFile file,
+            @RequestPart("file") MultipartFile file,
             Authentication authentication
     ) {
         messageService.uploadMediaMessage(chatId, file, authentication);
